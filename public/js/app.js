@@ -8,6 +8,18 @@ const apiService = new ApiService();
 
 (async () => {
     clearButton.addEventListener('click', clearFilters);
+    searchBar.addEventListener('keypress', e => {
+        if(e.keyCode === 13){
+            e.preventDefault();
+            apiService.setFilter({
+                name: {
+                    value: e.currentTarget.value,
+                    matchMode: 'contains',
+                }
+            });
+            reloadProducts(0);
+        }
+    })
     let [productResponse, categoryResponse] = await Promise.all([
         apiService.products(),
         apiService.categories(),
