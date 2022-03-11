@@ -60,10 +60,9 @@ class Pagination
         for(let button of buttons){
             button.addEventListener('click', e => {
                 e.currentTarget.classList.add('active');
-                let page = e.currentTarget.getAttribute('page');
-                pagination.setPage(page);
+                let page = parseInt(e.currentTarget.getAttribute('page'));
                 productList.innerHTML = '';
-                this.reloadProducts(page);
+                pagination.setPage(page);
             });
         }
     }
