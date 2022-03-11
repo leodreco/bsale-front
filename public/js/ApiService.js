@@ -3,16 +3,21 @@
  */
 class ApiService
 {
-    static apiUrl = 'http://localhost:3000/api';
+    apiUrl = 'http://localhost:3000/api';
+    categoryId = undefined;
 
-    static async products(categoryId = undefined, skip = 0, take = 12)
+    setCategory(categoryId){
+        this.categoryId = categoryId;
+    }
+
+    async products(skip = 0, take = 12)
     {
         let filters = '';
-        if(!!categoryId){
+        if(!!this.categoryId){
             filters = JSON.stringify({
                 filters: {
                     category: {
-                        value: categoryId,
+                        value: this.categoryId,
                         matchMode: 'equals'
                     },
                 },
@@ -23,7 +28,7 @@ class ApiService
         return response.data;
     }
 
-    static async categories()
+    async categories()
     {
         let response = await axios.get(`${this.apiUrl}/category`);
         return response.data;

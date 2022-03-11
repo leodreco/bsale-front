@@ -3,22 +3,33 @@ const categoryLabel = document.querySelector('#categoryLabel');
 const categoryList = document.querySelector('#categoryList');
 const productList = document.querySelector('#productList');
 const clearButton = document.querySelector('#clearButton');
+const pagination = new Pagination(document.querySelector('#pagination'), reloadProducts);
+const apiService = new ApiService();
 
 (async () => {
     clearButton.addEventListener('click', clearFilters);
     let [productResponse, categoryResponse] = await Promise.all([
-        ApiService.products(),
-        ApiService.categories(),
+        apiService.products(),
+        apiService.categories(),
     ]);
 
     if(productResponse.success){
         printProducts(productResponse.data);
+        pagination.setTotalRecords(productResponse.totalRows)
     }
 
     if(categoryResponse.success){
         printCategories(categoryResponse.data);
     }
 })();
+
+async function reloadProducts(page){
+    let response = await apiService.products(page * 12, 12);
+    if(response.success){
+        printProducts(response.data);
+        pagination.setTotalRecords(response.totalRows);
+    }
+}
 
 async function categoryOnClick(e){
     e.preventDefault();
@@ -27,20 +38,18 @@ async function categoryOnClick(e){
     categoryLabel.innerText = `Categoria: ${categoryName}`;
 
     productList.innerHTML = '';
-    let response = await ApiService.products(categoryId);
-    if(response.success){
-        printProducts(response.data);
-        clearButton.style.display = 'block';
-    }
+    apiService.setCategory(categoryId);
+    pagination.setPage(0);
 }
 
 async function clearFilters(e){
+    categoryLabel.innerText = '';
     clearButton.style.display = 'none';
     productList.innerHTML = '';
-    let response = await ApiService.products();
+    let response = await apiService.products();
     if(response.success){
         printProducts(response.data);
-        clearButton.style.display = 'block';
+        pagination.setTotalRecords(response.totalRows)
     }
 }
 
@@ -60,7 +69,6 @@ function printCategories(categories){
 function printProducts(products){
     productList.innerHTML = '';
     for(let product of products){
-        console.log(product);
         productList.innerHTML += `
             <div class="col" productId="${product.id}">
                 <div class="card shadow-sm">
