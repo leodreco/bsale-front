@@ -5,9 +5,21 @@ class ApiService
 {
     static apiUrl = 'http://localhost:3000/api';
 
-    static async products()
+    static async products(categoryId = undefined, skip = 0, take = 12)
     {
-        let response = await axios.get(`${this.apiUrl}/product`);
+        let filters = '';
+        if(!!categoryId){
+            filters = JSON.stringify({
+                filters: {
+                    category: {
+                        value: categoryId,
+                        matchMode: 'equals'
+                    },
+                },
+            });
+        }
+
+        let response = await axios.get(`${this.apiUrl}/product?skip=${skip}&take=${take}&filters=${filters}`);
         return response.data;
     }
 
