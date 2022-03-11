@@ -60,10 +60,20 @@
             </div>
 
             <div class="row mb-4" id="pagination">
-                <div class="col-5 descripcion">
+                <div class="col-sm-12 col-lg-3 descripcion">
                     Mostrando - a - de - registros
                 </div>
-                <div class="col-7">
+
+                <div class="mt-sm-2 col-sm-12 col-lg-4">
+                    <div class="btn-group" role="group" id="sort">
+                        <button type="button" class="btn btn-outline-primary active">A-Z</button>
+                        <button type="button" class="btn btn-outline-primary">Z-A</button>
+                        <button type="button" class="btn btn-outline-primary">Max-Min</button>
+                        <button type="button" class="btn btn-outline-primary">Min-Max</button>
+                    </div>
+                </div>
+
+                <div class="mt-sm-2 col-sm-12 col-lg-5">
                     <div class="btn-toolbar justify-content-end" role="toolbar">
                         <div class="btn-group me-2" role="group">
                             <button type="button" class="btn btn-primary previous"><<</button>
