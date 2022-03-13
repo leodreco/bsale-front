@@ -1,4 +1,3 @@
-const searchBar = document.querySelector('#searchBar');
 const categoryLabel = document.querySelector('#categoryLabel');
 const categoryList = document.querySelector('#categoryList');
 const productList = document.querySelector('#productList');
@@ -8,18 +7,7 @@ const filterManager = new Filters(reloadProducts);
 
 (async () => {
     clearButton.addEventListener('click', clearFilters);
-    searchBar.addEventListener('keypress', e => {
-        if(e.keyCode === 13){
-            e.preventDefault();
-            filterManager.setFilter({
-                name: {
-                    value: e.currentTarget.value,
-                    matchMode: 'contains',
-                }
-            });
-            reloadProducts(0);
-        }
-    })
+
     let [productResponse, categoryResponse] = await Promise.all([
         filterManager.products(),
         filterManager.categories(),
