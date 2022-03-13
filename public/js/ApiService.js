@@ -22,7 +22,11 @@ class ApiService
 
     setFilter(filter){
         for(let key in filter){
-            this.filters[key] = filter[key];
+            if(filter[key].value == ''){
+                delete this.filters[key];
+            }else{
+                this.filters[key] = filter[key];
+            }
         }
         this.reload(0);
     }
@@ -52,8 +56,6 @@ class ApiService
             };
         }
         queryData = UrlQuerySerialize(queryData);
-        console.log(queryData);
-        // let filters = JSON.stringify(objFilters);
 
         let response = await axios.get(`${this.apiUrl}/product?${queryData}`);
         return response.data;
