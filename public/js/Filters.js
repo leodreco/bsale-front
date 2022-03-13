@@ -28,7 +28,6 @@ class Filters
                 matchMode: type,
             };
             filterManager.setFilter(filter);
-            reloadProducts(0);
         });
         this.searchBar.addEventListener('keypress', e => {
             if(e.keyCode === 13){
@@ -42,7 +41,6 @@ class Filters
                     matchMode: type,
                 };
                 filterManager.setFilter(filter);
-                reloadProducts(0);
             }
         });
 
