@@ -2,6 +2,8 @@
 
 Listado de productos, con paginacion, ordenado de items, filtros consumiendo un api
 
+https://leodreco.github.io/bsale-front/public
+
 Desarrollado en vanilla javascript  y usando las librerias
 - Axios
 - Boostrap
