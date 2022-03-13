@@ -76,7 +76,7 @@ function printProducts(products){
         productList.innerHTML += `
             <div class="col" productId="${product.id}">
                 <div class="card shadow-sm">
-                    <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="${product.url_image}"/>
+                    <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="${product.url_image}" onerror="this.src='img/errorPlaceholder.jpg'"/>
             
                     <div class="card-body">
                         <h3>${product.name}</h3>
