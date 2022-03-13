@@ -13,13 +13,13 @@ Desarrollado en vanilla javascript  y usando las librerias
 ## Separado en 5 archivos js
 
 ### app.js
-Declara las variables y añade eventos
+Declara las variables y añade eventos, funciones generales como pintar los productos en el listado
 
 ### ApiService.js
 Controla el llamado a las apis
 
 ### Filters.js
-Controla los filtros y orden. Soporta filtros con multiples campos y modos
+Controla los filtros y orden. Soporta filtros con diferentes campos y modos, contiene, comienza con, mayor que, menor que, etc.
 
 ### Pagination.js
 Controla la paginación
