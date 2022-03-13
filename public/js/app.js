@@ -7,7 +7,7 @@ const filterManager = new Filters(reloadProducts);
 
 (async () => {
     clearButton.addEventListener('click', clearFilters);
-
+    setPlaceholders();
     let [productResponse, categoryResponse] = await Promise.all([
         filterManager.products(),
         filterManager.categories(),
@@ -24,6 +24,7 @@ const filterManager = new Filters(reloadProducts);
 })();
 
 async function reloadProducts(page = 0){
+    setPlaceholders();
     let response = await filterManager.products(page * 12, 12);
     if(response.success){
         printProducts(response.data);
@@ -48,6 +49,7 @@ async function clearFilters(e){
     categoryLabel.innerHTML = '';
     clearButton.style.display = 'none';
     productList.innerHTML = '';
+    setPlaceholders();
     let response = await filterManager.products();
     if(response.success){
         printProducts(response.data);
@@ -85,6 +87,34 @@ function printProducts(products){
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        `;
+    }
+}
+
+function setPlaceholders()
+{
+    productList.innerHTML = '';
+    for(let i = 0; i < 3; i++){
+        productList.innerHTML += `
+            <div class="col">
+                <div  class="card" aria-hidden="true">
+                    <svg class="bd-placeholder-img card-img-top" width="100%" height="300" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#868e96"></rect>
+                    </svg>
+            
+                    <div class="card-body">
+                        <h3 class="card-title placeholder-glow">
+                            <span class="placeholder col-6"></span>
+                        </h3>
+                        <p class="card-text placeholder-glow"><span class="placeholder col-4"></span></p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="#" tabindex="-1" class="btn btn-sm btn-outline-secondary disabled placeholder col-4"></a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         `;
