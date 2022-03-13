@@ -49,6 +49,7 @@ async function clearFilters(e){
     categoryLabel.innerHTML = '';
     clearButton.style.display = 'none';
     productList.innerHTML = '';
+    filterManager.setCategory(undefined);
     setPlaceholders();
     let response = await filterManager.products();
     if(response.success){

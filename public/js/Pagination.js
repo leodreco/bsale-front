@@ -54,7 +54,7 @@ class Pagination
         this.pagesDiv.innerHTML = '';
         for(let i = 0; i <= this.pages; i++){
             let active = this.skip == i * this.take ? 'active' : '';
-            this.pagesDiv.innerHTML += `<button type="button" class="btn btn-primary ${active}" page="${i}">${ i + 1 }</button>`;
+            this.pagesDiv.innerHTML += `<button type="button" class="btn btn-outline-primary ${active}" page="${i}">${ i + 1 }</button>`;
         }
         let buttons = this.pagesDiv.querySelectorAll('button');
         for(let button of buttons){
