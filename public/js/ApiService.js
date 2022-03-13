@@ -31,6 +31,11 @@ class ApiService
         this.reload(0);
     }
 
+    removeFilter(filter){
+        delete this.filters[filter];
+        this.reload(0);
+    }
+
     setSort(field, type){
         this.sort = {
             sortField: field,

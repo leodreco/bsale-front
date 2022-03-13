@@ -22,9 +22,6 @@
                 <div class="collapse navbar-collapse" id="headerNavbar">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="https://github.com/leodreco/bsale-front" target="_blank">Repo github frontend</a>
                         </li>
                         <li class="nav-item">
@@ -40,8 +37,10 @@
                         </li>
                     </ul>
                     <form>
-                        <input class="form-control" id="searchBar" type="text" placeholder="Buscar..."
-                            aria-label="Search">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="searchBar" placeholder="Buscar...">
+                            <button class="btn btn-secondary" type="reset" onclick="apiService.removeFilter('name');">X</button>
+                        </div>
                     </form>
                 </div>
             </div>
