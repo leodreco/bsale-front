@@ -3,36 +3,59 @@
  */
 class ApiService
 {
-    apiUrl = 'http://localhost:3000/api';
+    apiUrl = 'https://leodreco-bsale-back.herokuapp.com/api';
     categoryId = undefined;
     filters = {};
+    sort = {
+        sortField: 'id',
+        sortOrder: 'asc',
+    };
+
+    constructor(reload){
+        this.reload = reload;
+    }
 
     setCategory(categoryId){
         this.categoryId = categoryId;
+        this.reload(0);
     }
 
     setFilter(filter){
         for(let key in filter){
             this.filters[key] = filter[key];
         }
+        this.reload(0);
+    }
+
+    setSort(field, type){
+        this.sort = {
+            sortField: field,
+            sortOrder: type,
+        };
+        this.reload(0);
     }
 
     async products(skip = 0, take = 12)
     {
-        let objFilters = {
+        let queryData = {
+            skip,
+            take,
             filters: {
                 ...this.filters,
             },
+            ...this.sort,
         }
         if(!!this.categoryId){
-            objFilters.filters.category = {
+            queryData.filters.category = {
                 value: this.categoryId,
                 matchMode: 'equals',
             };
         }
-        let filters = JSON.stringify(objFilters);
+        queryData = UrlQuerySerialize(queryData);
+        console.log(queryData);
+        // let filters = JSON.stringify(objFilters);
 
-        let response = await axios.get(`${this.apiUrl}/product?skip=${skip}&take=${take}&filters=${filters}`);
+        let response = await axios.get(`${this.apiUrl}/product?${queryData}`);
         return response.data;
     }
 

@@ -4,7 +4,7 @@ const categoryList = document.querySelector('#categoryList');
 const productList = document.querySelector('#productList');
 const clearButton = document.querySelector('#clearButton');
 const pagination = new Pagination(document.querySelector('#pagination'), reloadProducts);
-const apiService = new ApiService();
+const apiService = new ApiService(reloadProducts);
 
 (async () => {
     clearButton.addEventListener('click', clearFilters);
@@ -35,7 +35,7 @@ const apiService = new ApiService();
     }
 })();
 
-async function reloadProducts(page){
+async function reloadProducts(page = 0){
     let response = await apiService.products(page * 12, 12);
     if(response.success){
         printProducts(response.data);
@@ -47,15 +47,17 @@ async function categoryOnClick(e){
     e.preventDefault();
     let categoryId = e.currentTarget.getAttribute('category');
     let categoryName = e.currentTarget.innerText;
-    categoryLabel.innerText = `Categoria: ${categoryName}`;
+    
+    categoryLabel.innerHTML = `<span class="badge bg-success mt-1">Categoria: ${categoryName}</span>`;
 
     productList.innerHTML = '';
     apiService.setCategory(categoryId);
+    clearButton.style.display = 'block';
     pagination.setPage(0);
 }
 
 async function clearFilters(e){
-    categoryLabel.innerText = '';
+    categoryLabel.innerHTML = '';
     clearButton.style.display = 'none';
     productList.innerHTML = '';
     let response = await apiService.products();
@@ -91,7 +93,7 @@ function printProducts(products){
                         <p class="card-text">S/${product.price}</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Agregar</button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary capitalize">${product.categoryM.name}</button>
                             </div>
                         </div>
                     </div>
