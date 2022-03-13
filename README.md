@@ -1,8 +1,10 @@
 # bsale-front
 
-Listado de productos, con paginacion, ordenado de items, filtros consumiendo un api
+Listado de productos, con paginacion, ordenado de items, filtros consumiendo un api.
 
-https://leodreco.github.io/bsale-front/public
+Proyecto backend con el api: https://github.com/leodreco/bsale-back
+
+Visualisar el proyecto en: https://leodreco.github.io/bsale-front/public
 
 Desarrollado en vanilla javascript  y usando las librerias
 - Axios
@@ -42,5 +44,3 @@ Sería
 
 filters[name][value]="ron"&filters[name][matchMode]="contains"&sortField=id
 ```
-
-Proyecto backend con el api: https://github.com/leodreco/bsale-back

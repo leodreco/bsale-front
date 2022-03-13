@@ -72,6 +72,6 @@ class Pagination
         if(to > this.totalRecords){
             to = this.totalRecords;
         }
-        this.container.querySelector('.descripcion').innerText = `Mostrando ${this.skip + 1} a ${to} de ${this.totalRecords} entradas`;
+        this.container.querySelector('.descripcion p').innerText = `Mostrando ${this.skip + 1} a ${to} de ${this.totalRecords} entradas`;
     }
 }

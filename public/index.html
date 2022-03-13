@@ -59,33 +59,35 @@
             </div>
 
             <div class="row mb-4" id="pagination">
-                <div class="col-sm-12 col-lg-3 descripcion">
-                    Mostrando - a - de - registros
+                <div class="col-sm-12 col-lg-6 col-xl-3 descripcion">
+                    <p class="text-center text-lg-left mb-0">Mostrando - a - de - registros</p>
                 </div>
 
-                <div class="mt-sm-2 col-sm-12 col-lg-4">
-                    <div class="btn-group" role="group" data-toggle="button" id="sort">
+                <div class="mt-2 mt-lg-0 col-sm-12 col-lg-6 col-xl-4">
+                    <div class="btn-toolbar justify-content-center" role="toolbar">
+                        <div class="btn-group" role="group" data-toggle="button" id="sort">
 
-                        <input type="radio" class="btn-check" name="rdSort" id="rdSort1" checked onclick="filterManager.setSort('id', 'asc');">
-                        <label class="btn btn-outline-primary" for="rdSort1">Default</label>
-                      
-                        <input type="radio" class="btn-check" name="rdSort" id="rdSort2" onclick="filterManager.setSort('name', 'asc');">
-                        <label class="btn btn-outline-primary" for="rdSort2">A-Z</label>
-                      
-                        <input type="radio" class="btn-check" name="rdSort" id="rdSort3" onclick="filterManager.setSort('name', 'desc');">
-                        <label class="btn btn-outline-primary" for="rdSort3">Z-A</label>
+                            <input type="radio" class="btn-check" name="rdSort" id="rdSort1" checked onclick="filterManager.setSort('id', 'asc');">
+                            <label class="btn btn-outline-primary" for="rdSort1">Default</label>
+                        
+                            <input type="radio" class="btn-check" name="rdSort" id="rdSort2" onclick="filterManager.setSort('name', 'asc');">
+                            <label class="btn btn-outline-primary" for="rdSort2">A-Z</label>
+                        
+                            <input type="radio" class="btn-check" name="rdSort" id="rdSort3" onclick="filterManager.setSort('name', 'desc');">
+                            <label class="btn btn-outline-primary" for="rdSort3">Z-A</label>
 
-                        <input type="radio" class="btn-check" name="rdSort" id="rdSort4" onclick="filterManager.setSort('price', 'asc');">
-                        <label class="btn btn-outline-primary" for="rdSort4">Max-Min</label>
+                            <input type="radio" class="btn-check" name="rdSort" id="rdSort4" onclick="filterManager.setSort('price', 'asc');">
+                            <label class="btn btn-outline-primary" for="rdSort4">Max-Min</label>
 
-                        <input type="radio" class="btn-check" name="rdSort" id="rdSort5" onclick="filterManager.setSort('price', 'desc');">
-                        <label class="btn btn-outline-primary" for="rdSort5">Min-Max</label>
+                            <input type="radio" class="btn-check" name="rdSort" id="rdSort5" onclick="filterManager.setSort('price', 'desc');">
+                            <label class="btn btn-outline-primary" for="rdSort5">Min-Max</label>
 
+                        </div>
                     </div>
                 </div>
 
-                <div class="mt-sm-2 col-sm-12 col-lg-5">
-                    <div class="btn-toolbar justify-content-end" role="toolbar">
+                <div class="mt-2 mt-xl-0 col-sm-12 col-lg-12 col-xl-5">
+                    <div class="btn-toolbar justify-content-center justify-content-xl-end" role="toolbar">
                         <div class="btn-group me-2" role="group">
                             <button type="button" class="btn btn-primary previous"><<</button>
                         </div>
