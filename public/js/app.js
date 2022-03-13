@@ -76,10 +76,10 @@ function printProducts(products){
         productList.innerHTML += `
             <div class="col" productId="${product.id}">
                 <div class="card shadow-sm">
-                    <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="${product.url_image}" onerror="this.src='img/errorPlaceholder.jpg'"/>
+                    <img class="bd-placeholder-img card-img-top" width="100%" height="300" src="${product.url_image}" onerror="this.src='img/errorPlaceholder.jpg'"/>
             
                     <div class="card-body">
-                        <h3>${product.name}</h3>
+                        <h5>${product.name}</h5>
                         <p class="card-text">S/${product.price}</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
@@ -96,7 +96,7 @@ function printProducts(products){
 function setPlaceholders()
 {
     productList.innerHTML = '';
-    for(let i = 0; i < 3; i++){
+    for(let i = 0; i < 4; i++){
         productList.innerHTML += `
             <div class="col">
                 <div  class="card" aria-hidden="true">
