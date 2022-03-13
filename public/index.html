@@ -28,53 +28,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="https://github.com/leodreco/bsale-back" target="_blank"><i class="bi bi-github"></i> Backend</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="dropdown-category"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Categorias
-                            </a>
-                            <ul class="dropdown-menu capitalize" aria-labelledby="dropdown-category" id="categoryList">
-                            </ul>
-                        </li>
                     </ul>
-                    <form>
-                        <div class="input-group" id="searchContainer">
-                            <div class="dropdown type">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi bi-filter"></i>
-                                    <span value="startsWith">Comienza con</span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#" style="display: none;" value="gt" type="number">Mayor que</a></li>
-                                    <li><a class="dropdown-item" href="#" style="display: none;" value="gte" type="number">Mayor, igual que</a></li>
-                                    <li><a class="dropdown-item" href="#" style="display: none;" value="lt" type="number">Menor que</a></li>
-                                    <li><a class="dropdown-item" href="#" style="display: none;" value="lte" type="number">Menor, igual que</a></li>
-
-                                    <li><a class="dropdown-item" href="#" value="startsWith" type="text">Comienza con</a></li>
-                                    <li><a class="dropdown-item" href="#" value="contains" type="text">Contiene</a></li>
-                                    <li><a class="dropdown-item" href="#" value="endsWith" type="text">Termina en</a></li>
-                                    <li><a class="dropdown-item" href="#" value="equals" type="text|number">Igual a</a></li>
-                                </ul>
-                            </div>
-                            <div class="dropdown field">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi bi-filter"></i>
-                                    <span value="name">Nombre</span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                  <li><a class="dropdown-item" href="#" value="name" type="text">Nombre</a></li>
-                                  <li><a class="dropdown-item" href="#" value="price" type="number">Precio</a></li>
-                                </ul>
-                            </div>
-                            <input type="text" class="form-control" id="searchBar" placeholder="Buscar...">
-                            <button class="btn btn-primary searchButton" type="button">
-                                <i class="bi bi-search"></i>
-                            </button>
-                            <button class="btn btn-danger clearButton" type="reset">
-                                <i class="bi bi-trash"></i>
-                            </button>
-                        </div>
-                    </form>
                 </div>
             </div>
         </nav>
@@ -82,12 +36,75 @@
 
     <main class="bg-light">
         <div class="container">
-
-            <div class="p-5 mb-4">
+            <div class="p-5 pb-0">
                 <div class="container-fluid py-5">
                     <h1 class="display-5 fw-bold">BSale Tienda</h1>
-                    <p class="col-md-8 fs-4 mt-1" id="categoryLabel"></p>
-                    <button class="btn btn-primary btn-lg mt-1" type="button" style="display: none;" id="clearButton">Limpiar filtros</button>
+
+                    <fieldset>
+                        <legend>Filtros</legend>
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 col-lg-6 col-xl-7">
+                                    <form>
+                                        <div class="input-group" id="searchContainer">
+                                            <div class="dropdown type">
+                                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="bi bi-filter"></i>
+                                                    <span value="startsWith">Comienza con</span>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" href="#" style="display: none;" value="gt" type="number">Mayor que</a></li>
+                                                    <li><a class="dropdown-item" href="#" style="display: none;" value="gte" type="number">Mayor, igual que</a></li>
+                                                    <li><a class="dropdown-item" href="#" style="display: none;" value="lt" type="number">Menor que</a></li>
+                                                    <li><a class="dropdown-item" href="#" style="display: none;" value="lte" type="number">Menor, igual que</a></li>
+            
+                                                    <li><a class="dropdown-item" href="#" value="startsWith" type="text">Comienza con</a></li>
+                                                    <li><a class="dropdown-item" href="#" value="contains" type="text">Contiene</a></li>
+                                                    <li><a class="dropdown-item" href="#" value="endsWith" type="text">Termina en</a></li>
+                                                    <li><a class="dropdown-item" href="#" value="equals" type="text|number">Igual a</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="dropdown field">
+                                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="bi bi-filter"></i>
+                                                    <span value="name">Nombre</span>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="#" value="name" type="text">Nombre</a></li>
+                                                <li><a class="dropdown-item" href="#" value="price" type="number">Precio</a></li>
+                                                </ul>
+                                            </div>
+                                            <input type="text" class="form-control" id="searchBar" placeholder="Buscar...">
+                                            <button class="btn btn-primary searchButton" type="button">
+                                                <i class="bi bi-search"></i>
+                                            </button>
+                                            <button class="btn btn-danger clearButton" type="reset">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="col-12 col-lg-6 col-xl-5 mt-2 mt-lg-0">
+                                    <div class="input-group">
+                                        <div class="dropdown">
+                                            <a class="btn btn-warning dropdown-toggle" href="#" id="dropdown-category"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                Categorias
+                                            </a>
+                                            <ul class="dropdown-menu capitalize" aria-labelledby="dropdown-category" id="categoryList"></ul>
+                                        </div>
+                                        <button class="btn btn-danger" type="button" style="display: none;" id="clearButton">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </div>
+            
+                                    <p class="col-md-8 fs-4 mt-1" id="categoryLabel"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
                 </div>
             </div>
 
