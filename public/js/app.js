@@ -4,14 +4,14 @@ const categoryList = document.querySelector('#categoryList');
 const productList = document.querySelector('#productList');
 const clearButton = document.querySelector('#clearButton');
 const pagination = new Pagination(document.querySelector('#pagination'), reloadProducts);
-const apiService = new ApiService(reloadProducts);
+const filterManager = new Filters(reloadProducts);
 
 (async () => {
     clearButton.addEventListener('click', clearFilters);
     searchBar.addEventListener('keypress', e => {
         if(e.keyCode === 13){
             e.preventDefault();
-            apiService.setFilter({
+            filterManager.setFilter({
                 name: {
                     value: e.currentTarget.value,
                     matchMode: 'contains',
@@ -21,8 +21,8 @@ const apiService = new ApiService(reloadProducts);
         }
     })
     let [productResponse, categoryResponse] = await Promise.all([
-        apiService.products(),
-        apiService.categories(),
+        filterManager.products(),
+        filterManager.categories(),
     ]);
 
     if(productResponse.success){
@@ -36,7 +36,7 @@ const apiService = new ApiService(reloadProducts);
 })();
 
 async function reloadProducts(page = 0){
-    let response = await apiService.products(page * 12, 12);
+    let response = await filterManager.products(page * 12, 12);
     if(response.success){
         printProducts(response.data);
         pagination.setTotalRecords(response.totalRows);
@@ -51,7 +51,7 @@ async function categoryOnClick(e){
     categoryLabel.innerHTML = `<span class="badge bg-success mt-1">Categoria: ${categoryName}</span>`;
 
     productList.innerHTML = '';
-    apiService.setCategory(categoryId);
+    filterManager.setCategory(categoryId);
     clearButton.style.display = 'block';
     pagination.setPage(0);
 }
@@ -60,7 +60,7 @@ async function clearFilters(e){
     categoryLabel.innerHTML = '';
     clearButton.style.display = 'none';
     productList.innerHTML = '';
-    let response = await apiService.products();
+    let response = await filterManager.products();
     if(response.success){
         printProducts(response.data);
         pagination.setTotalRecords(response.totalRows)

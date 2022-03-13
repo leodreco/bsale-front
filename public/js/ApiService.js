@@ -3,72 +3,35 @@
  */
 class ApiService
 {
-    apiUrl = 'https://leodreco-bsale-back.herokuapp.com/api';
-    categoryId = undefined;
-    filters = {};
-    sort = {
-        sortField: 'id',
-        sortOrder: 'asc',
-    };
+    static apiUrl = 'https://leodreco-bsale-back.herokuapp.com/api';
 
-    constructor(reload){
-        this.reload = reload;
-    }
-
-    setCategory(categoryId){
-        this.categoryId = categoryId;
-        this.reload(0);
-    }
-
-    setFilter(filter){
-        for(let key in filter){
-            if(filter[key].value == ''){
-                delete this.filters[key];
-            }else{
-                this.filters[key] = filter[key];
-            }
-        }
-        this.reload(0);
-    }
-
-    removeFilter(filter){
-        delete this.filters[filter];
-        this.reload(0);
-    }
-
-    setSort(field, type){
-        this.sort = {
-            sortField: field,
-            sortOrder: type,
-        };
-        this.reload(0);
-    }
-
-    async products(skip = 0, take = 12)
+    static async products(queryData)
     {
-        let queryData = {
-            skip,
-            take,
-            filters: {
-                ...this.filters,
-            },
-            ...this.sort,
-        }
-        if(!!this.categoryId){
-            queryData.filters.category = {
-                value: this.categoryId,
-                matchMode: 'equals',
+        queryData = UrlQuerySerialize(queryData);
+        try{
+            return await axios.get(`${this.apiUrl}/product?${queryData}`);
+        }catch(e){
+            alert(e.response.data.message);
+            console.error('Error en la llamada: ', e.response.data.message);
+            return {
+                success: false,
+                data: []
             };
         }
-        queryData = UrlQuerySerialize(queryData);
-
-        let response = await axios.get(`${this.apiUrl}/product?${queryData}`);
-        return response.data;
     }
 
-    async categories()
+    static async categories(queryData = {})
     {
-        let response = await axios.get(`${this.apiUrl}/category`);
-        return response.data;
+        queryData = UrlQuerySerialize(queryData);
+        try{
+            return await axios.get(`${this.apiUrl}/category?${queryData}`);
+        }catch(e){
+            alert(e.response.data.message);
+            console.error('Error en la llamada: ', e.response.data.message);
+            return {
+                success: false,
+                data: []
+            };
+        }
     }
 }
