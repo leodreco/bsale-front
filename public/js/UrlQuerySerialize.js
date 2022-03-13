@@ -18,7 +18,7 @@ function UrlQuerySerialize(data, name = undefined){
                 query.push(`${key}=${value}`);
             }else if(typeof value === 'object'){
                 for(let valueKey in value){
-                    query.push(querySerialize(value[valueKey], `${key}[${valueKey}]`));
+                    query.push(UrlQuerySerialize(value[valueKey], `${key}[${valueKey}]`));
                 }
             }
             
