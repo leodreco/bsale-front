@@ -46,8 +46,8 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-12 col-lg-9 col-xl-7">
-                                    <form>
-                                        <div class="input-group" id="searchContainer">
+                                    <form id="searchContainer">
+                                        <div class="input-group">
                                             <div class="dropdown type">
                                                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                     <i class="bi bi-filter"></i>
@@ -65,7 +65,7 @@
                                                     <li><a class="dropdown-item" href="#" value="equals" type="text|number">Igual a</a></li>
                                                 </ul>
                                             </div>
-                                            <div class="dropdown field">
+                                            <div class="dropdown field ml-2">
                                                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                     <i class="bi bi-filter"></i>
                                                     <span value="name">Nombre</span>
@@ -76,6 +76,8 @@
                                                     <li><a class="dropdown-item" href="#" value="discount" type="number">Descuento</a></li>
                                                 </ul>
                                             </div>
+                                        </div>
+                                        <div class="input-group">
                                             <input type="text" class="form-control" id="searchBar" placeholder="Buscar...">
                                             <button class="btn btn-primary searchButton" type="button">
                                                 <i class="bi bi-search"></i>

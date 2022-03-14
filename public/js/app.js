@@ -91,7 +91,7 @@ function printProducts(products){
         }
         productList.innerHTML += `
             <div class="col" productId="${product.id}">
-                <div class="card shadow-sm">
+                <div class="card border border-secondary shadow-sm">
                     <img class="bd-placeholder-img card-img-top" width="100%" height="300" src="${product.url_image}" onerror="this.src='img/errorPlaceholder.jpg'"/>
             
                     <div class="card-body">
@@ -115,7 +115,7 @@ function setPlaceholders()
     for(let i = 0; i < 4; i++){
         productList.innerHTML += `
             <div class="col">
-                <div  class="card" aria-hidden="true">
+                <div  class="card border border-secondary" aria-hidden="true">
                     <svg class="bd-placeholder-img card-img-top" width="100%" height="300" focusable="false">
                         <title>Placeholder</title>
                         <rect width="100%" height="100%" fill="#868e96"></rect>
