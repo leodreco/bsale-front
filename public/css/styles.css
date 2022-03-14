@@ -5,3 +5,19 @@
 .card > img{
     object-fit:contain;
 }
+
+.discount-pill{
+    position: absolute;
+    bottom: 30px;
+    right: 20px;
+    font-size: 25px;
+    z-index: 100;
+}
+
+.price-pill{
+    /* position: absolute;
+    bottom: 20px;
+    right: 20px; */
+    font-size: 15px;
+    z-index: 100;
+}

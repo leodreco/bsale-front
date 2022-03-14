@@ -74,6 +74,21 @@ function printCategories(categories){
 function printProducts(products){
     productList.innerHTML = '';
     for(let product of products){
+        let priceSpan = `<span class="badge rounded-pill bg-secondary price-pill">S/${product.price}</span>`;
+        let discountSpan = '';
+        if(product.discount > 0){
+            priceSpan = `
+                <span class="text-decoration-line-through">S/${product.price}</span>
+                <span class="badge rounded-pill bg-danger">
+                    ${product.discount}%
+                </span>
+            `;
+            discountSpan = `
+                <span class="badge rounded-pill bg-warning text-dark discount-pill">
+                    S/ ${product.price * (1 - product.discount / 100)}
+                </span>
+            `;
+        }
         productList.innerHTML += `
             <div class="col" productId="${product.id}">
                 <div class="card shadow-sm">
@@ -81,7 +96,7 @@ function printProducts(products){
             
                     <div class="card-body">
                         <h5>${product.name}</h5>
-                        <p class="card-text">S/${product.price}</p>
+                        <p class="card-text">${priceSpan}${discountSpan}</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
                                 <button type="button" class="btn btn-sm btn-outline-secondary capitalize">${product.categoryM.name}</button>
